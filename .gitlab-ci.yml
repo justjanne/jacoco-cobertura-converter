@@ -28,7 +28,7 @@ release:
   stage: "release"
   cache: {}
   script:
-    - "./gradlew publish"
+    - "./gradlew publishPlugins"
   artifacts:
     paths:
       - "build/libs/*"
