@@ -9,7 +9,6 @@ before_script:
   - "mkdir -p $(pwd)/.gradle"
   - "export GRADLE_USER_HOME=$(pwd)/.gradle"
   - "echo $SIGNING_properties | base64 -d > .gradle/gradle.properties"
-  - "echo $SIGNING_secretKey | base64 -d > .gradle/sonatype_upload.gpg"
   - "chmod +x ./gradlew"
 
 stages:
@@ -25,22 +24,6 @@ build:
     - if: "$CI_COMMIT_BRANCH == 'master'"
       when: always
 
-test:
-  stage: "test"
-  script:
-    - "./gradlew check --stacktrace"
-  artifacts:
-    paths:
-      - "build/test-results/**/TEST-*.xml"
-    reports:
-      junit:
-        - "build/test-results/**/TEST-*.xml"
-  rules:
-    - if: "$CI_COMMIT_BRANCH == 'master'"
-      when: always
-  dependencies:
-    - "build"
-
 release:
   stage: "release"
   cache: {}
@@ -51,7 +34,6 @@ release:
       - "build/libs/*"
   dependencies:
     - "build"
-    - "test"
   rules:
     - if: "$CI_COMMIT_TAG != '' && $CI_COMMIT_BRANCH == 'master'"
       when: always
