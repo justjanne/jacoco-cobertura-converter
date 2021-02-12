@@ -48,7 +48,6 @@ internal class CoverageConverterAction(
     return file
   }
 
-
   override fun execute(task: Task) {
     val cover2coverScript = createPythonScript("cover2cover.py", task.temporaryDir)
     val source2filenameScript = createPythonScript("source2filename.py", task.temporaryDir)

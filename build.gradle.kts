@@ -27,7 +27,7 @@ pluginBundle {
 }
 
 group = "de.justjanne"
-version = "1.0"
+version = "1.0.2"
 
 gradlePlugin {
   plugins {
