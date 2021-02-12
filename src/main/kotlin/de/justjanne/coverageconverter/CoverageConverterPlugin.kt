@@ -45,4 +45,3 @@ class CoverageConverterPlugin : Plugin<Project> {
     }
   }
 }
-

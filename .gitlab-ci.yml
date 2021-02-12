@@ -13,7 +13,6 @@ before_script:
 
 stages:
   - "build"
-  - "test"
   - "release"
 
 build:
@@ -34,6 +33,8 @@ release:
       - "build/libs/*"
   dependencies:
     - "build"
+  needs:
+    - job: "build"
   rules:
     - if: "$CI_COMMIT_TAG != '' && $CI_COMMIT_BRANCH == 'master'"
       when: always
