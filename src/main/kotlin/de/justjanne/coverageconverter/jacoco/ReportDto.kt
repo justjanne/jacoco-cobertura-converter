@@ -11,7 +11,6 @@ package de.justjanne.coverageconverter.jacoco
 
 import com.fasterxml.jackson.dataformat.xml.annotation.JacksonXmlElementWrapper
 import com.fasterxml.jackson.dataformat.xml.annotation.JacksonXmlProperty
-import javax.xml.bind.annotation.XmlAttribute
 
 data class ReportDto(
   @field:JacksonXmlProperty(isAttribute = true, localName = "name")
