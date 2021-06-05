@@ -10,36 +10,21 @@
 import org.jetbrains.kotlin.gradle.tasks.KotlinCompile
 
 plugins {
-  kotlin("jvm") version "1.4.21"
+  kotlin("jvm") version "1.5.0"
   id("org.jlleitschuh.gradle.ktlint") version "10.0.0"
-  id("org.jetbrains.dokka") version "1.4.20"
+  id("org.jetbrains.dokka") version "1.4.32"
   id("maven-publish")
   id("com.vanniktech.maven.publish") version "0.13.0"
 }
 
 repositories {
   mavenCentral()
-  exclusiveContent {
-    forRepository {
-      maven {
-        name = "JCenter"
-        setUrl("https://jcenter.bintray.com/")
-      }
-    }
-    filter {
-      // Required for Dokka
-      includeModule("com.soywiz.korlibs.korte", "korte-jvm")
-      includeModule("org.jetbrains.kotlinx", "kotlinx-html-jvm")
-      includeGroup("org.jetbrains.dokka")
-      includeModule("org.jetbrains", "markdown")
-    }
-  }
 }
 
 dependencies {
-  api("com.fasterxml.jackson.core", "jackson-databind", "2.12.1")
-  api("com.fasterxml.jackson.module", "jackson-module-kotlin", "2.12.0")
-  api("com.fasterxml.jackson.dataformat", "jackson-dataformat-xml", "2.12.1")
+  api("com.fasterxml.jackson.core", "jackson-databind", "2.12.3")
+  api("com.fasterxml.jackson.module", "jackson-module-kotlin", "2.12.3")
+  api("com.fasterxml.jackson.dataformat", "jackson-dataformat-xml", "2.12.3")
 
   testImplementation(kotlin("test-junit5"))
 
